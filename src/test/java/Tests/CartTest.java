@@ -7,7 +7,7 @@ import pages.*;
 public class CartTest extends BaseTest{
 
     @Test
-    public void validateAddingProductToCart() {
+    public void validateAddingProduct() {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         ProductPage productPage = new ProductPage(driver);
@@ -29,7 +29,7 @@ public class CartTest extends BaseTest{
     }
 
     @Test
-    public void validateRemovingProductFromCart(){
+    public void validateRemovingProduct(){
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         ProductPage productPage = new ProductPage(driver);
@@ -39,6 +39,7 @@ public class CartTest extends BaseTest{
         homePage.openProduct();
         productPage.addProductToCart();
         productPage.moveToCartPage();
+        Assert.assertTrue(cartPage.isRemoveButtonDisplayed());
         cartPage.emptyTheCart();
     }
 }

@@ -2,14 +2,14 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 public class FinishPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public FinishPage(WebDriver driver){
         this.driver=driver;
     }
 
     //Elements
-    private By confirmationMessage = By.xpath("//h2[text()=\"THANK YOU FOR YOUR ORDER\"]");
+    private final By confirmationMessage = By.xpath("//h2[text()=\"THANK YOU FOR YOUR ORDER\"]");
 
 
     //Assert

@@ -2,7 +2,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 public class HomePage {
-    private WebDriver driver;
+    private final WebDriver driver;
     public HomePage (WebDriver driver) {
         this.driver = driver;
     }
@@ -10,8 +10,9 @@ public class HomePage {
     String productName = "Sauce Labs Bolt T-Shirt";
 
     //Elements
-    private By headerArea = By.className("app_logo");
-    private By productLink = By.xpath("//div[text()=\""+productName+"\"]");
+    private final By headerArea = By.className("app_logo");
+    private final By productLink = By.xpath("//div[text()=\""+productName+"\"]");
+    private final By productLabel = By.xpath("//div[@class=\"product_label\"]");
 
 
     //getter
@@ -25,8 +26,8 @@ public class HomePage {
     }
 
     //Assert
-    public boolean isHeaderAreaDisplayed(){
-        return driver.findElement(headerArea).isDisplayed();
+    public boolean areProductsDisplayed(){
+        return driver.findElement(productLabel).isDisplayed();
     }
 
 }

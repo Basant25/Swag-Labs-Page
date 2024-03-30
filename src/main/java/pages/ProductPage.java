@@ -2,7 +2,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 public class ProductPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public ProductPage (WebDriver driver) {
 
@@ -11,10 +11,10 @@ public class ProductPage {
 
 
     //Elements
-    private By productPrice = By.className("inventory_details_price");
-    private By addToCartButton = By.xpath("//button[@class=\"btn_primary btn_inventory\"]");
-    private By cartIcon = By.id("shopping_cart_container");
-    private By removeButton = By.xpath("//button[@class=\"btn_secondary btn_inventory\"]");
+    private final By productPrice = By.className("inventory_details_price");
+    private final By addToCartButton = By.xpath("//button[@class=\"btn_primary btn_inventory\"]");
+    private final By cartIcon = By.id("shopping_cart_container");
+    private final By removeButton = By.xpath("//button[@class=\"btn_secondary btn_inventory\"]");
 
     //getter
     public By getProductPrice(){
