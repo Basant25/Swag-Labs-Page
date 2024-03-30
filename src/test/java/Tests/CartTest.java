@@ -26,6 +26,19 @@ public class CartTest extends BaseTest{
         checkoutPage.enterYourInf("Basant","Sayed","12345");
         checkoutOverview.finishCheckout();
         Assert.assertTrue(finishPage.isConfirmationMessageDisplayed());
+    }
 
+    @Test
+    public void validateRemovingProductFromCart(){
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        ProductPage productPage = new ProductPage(driver);
+        CartPage cartPage = new CartPage(driver);
+
+        loginPage.login("standard_user", "secret_sauce");
+        homePage.openProduct();
+        productPage.addProductToCart();
+        productPage.moveToCartPage();
+        cartPage.emptyTheCart();
     }
 }

@@ -13,6 +13,8 @@ public class HomePage {
     private By headerArea = By.className("app_logo");
     private By productLink = By.xpath("//div[text()=\""+productName+"\"]");
 
+
+    //getter
     public By getHeaderArea(){
         return headerArea;
     }

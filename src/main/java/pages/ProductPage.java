@@ -14,6 +14,9 @@ public class ProductPage {
     private By productPrice = By.className("inventory_details_price");
     private By addToCartButton = By.xpath("//button[@class=\"btn_primary btn_inventory\"]");
     private By cartIcon = By.id("shopping_cart_container");
+    private By removeButton = By.xpath("//button[@class=\"btn_secondary btn_inventory\"]");
+
+    //getter
     public By getProductPrice(){
         return productPrice;
     }
@@ -26,4 +29,8 @@ public class ProductPage {
         driver.findElement(cartIcon).click();
     }
 
+    //Assert
+    public boolean isRemoveButtonDisplayed() {
+        return driver.findElement(removeButton).isDisplayed();
+    }
 }

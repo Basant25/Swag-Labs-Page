@@ -11,12 +11,18 @@ public class CartPage {
     //Elements
     private By productName = By.xpath("//div[text()=\"Sauce Labs Bolt T-Shirt\"]");
     private By checkoutButton = By.xpath("//a[@class=\"btn_action checkout_button\"]");
+    private By removeButton = By.xpath("//button[@class=\"btn_secondary cart_button\"]");
+    private By continueShoppingButton = By.xpath("//a[@class=\"btn_secondary\"]");
 
 
     //Actions
     public void checkout(){
         driver.findElement(checkoutButton).click();
 
+    }
+    public void emptyTheCart(){
+        driver.findElement(removeButton).click();
+        driver.findElement(continueShoppingButton).click();
     }
 
     //Assert

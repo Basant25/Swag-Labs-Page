@@ -20,5 +20,8 @@ public class ProductTest extends BaseTest{
         String actualValue = driver.findElement(productPage.getProductPrice()).getText();
         Assert.assertEquals(actualValue, expectedPrice);
 
+        productPage.addProductToCart();
+        Assert.assertTrue(productPage.isRemoveButtonDisplayed());
+
     }
 }
