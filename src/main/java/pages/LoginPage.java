@@ -16,21 +16,18 @@ public class LoginPage {
     private final By errorButton = By.className("error-button");
 
 
+    //getter
+    public static By ErrorButton(){
+        return By.className("error-button");
+    }
+
+
     //Actions
-    public void login(String username, String password) {
+    public HomePage login(String username, String password) {
         driver.findElement(usernameField).sendKeys(username);
         driver.findElement(passwordField).sendKeys(password);
         driver.findElement(loginButton).click();
-    }
 
-    //Assert
-    public boolean isLoggedSuccessfully() {
-        HomePage homePage = new HomePage(driver);
-        return driver.findElement(homePage.getHeaderArea()).isDisplayed();
-    }
-
-    public boolean isNotLoggedSuccessfully() {
-        return driver.findElement(errorButton).isDisplayed();
-
+        return new HomePage(driver);
     }
 }

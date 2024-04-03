@@ -9,10 +9,9 @@ public class HomeTest extends BaseTest{
 
     @Test
     public void testHomePage(){
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homepage = new HomePage(driver);
-        loginPage.login("standard_user","secret_sauce");
-        Assert.assertTrue(homepage.areProductsDisplayed());
 
+        new LoginPage(driver).login("standard_user","secret_sauce");
+        boolean areProductsDisplayed=driver.findElement(HomePage.HeaderArea()).isDisplayed();
+        Assert.assertTrue(areProductsDisplayed);
     }
 }

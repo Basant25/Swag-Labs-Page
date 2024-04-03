@@ -16,21 +16,26 @@ public class ProductPage {
     private final By cartIcon = By.id("shopping_cart_container");
     private final By removeButton = By.xpath("//button[@class=\"btn_secondary btn_inventory\"]");
 
+
     //getter
-    public By getProductPrice(){
-        return productPrice;
+    public static By ProductPrice(){
+        return By.className("inventory_details_price");
     }
+    public static By RemoveButton (){
+        return By.xpath("//button[@class=\"btn_secondary btn_inventory\"]");
+    }
+
 
     //Actions
-    public void addProductToCart(){
+    public ProductPage addProductToCart(){
         driver.findElement(addToCartButton).click();
+
+        return this;
     }
-    public void moveToCartPage(){
+    public CartPage moveToCartPage(){
         driver.findElement(cartIcon).click();
+
+        return new CartPage(driver);
     }
 
-    //Assert
-    public boolean isRemoveButtonDisplayed() {
-        return driver.findElement(removeButton).isDisplayed();
-    }
 }

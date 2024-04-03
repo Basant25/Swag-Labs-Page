@@ -15,12 +15,23 @@ public class CheckoutPage {
     private final By continueButton = By.xpath("//input[@class=\"btn_primary cart_button\"]");
 
 
+    //getter
+    public static By ContinueButton(){
+        return By.xpath("//input[@class=\"btn_primary cart_button\"]");
+    }
+    public static By ErrorInf(){
+        return By.xpath("//button[@class=\"error-button\"]");
+    }
+
+
     //Actions
-    public void enterYourInf(String firstname, String lastname, String postalCode){
+    public OverviewPage enterYourInf(String firstname, String lastname, String postalCode){
         driver.findElement(firstnameField).sendKeys(firstname);
         driver.findElement(lastnameField).sendKeys(lastname);
         driver.findElement(postalCodeField).sendKeys(postalCode);
         driver.findElement(continueButton).click();
+
+        return new OverviewPage(driver);
 
     }
 }

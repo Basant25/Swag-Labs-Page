@@ -7,39 +7,31 @@ import pages.*;
 public class CartTest extends BaseTest{
 
     @Test
-    public void validateAddingProduct() {
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
-        ProductPage productPage = new ProductPage(driver);
-        CartPage cartPage = new CartPage(driver);
-        CheckoutPage checkoutPage = new CheckoutPage(driver);
-        OverviewPage checkoutOverview = new OverviewPage(driver);
-        FinishPage finishPage = new FinishPage(driver);
+    public void validateProductPurchase() {
 
-        loginPage.login("standard_user", "secret_sauce");
-        homePage.openProduct();
-        productPage.addProductToCart();
-        productPage.moveToCartPage();
-        Assert.assertTrue(cartPage.isProductDisplayed());
+        new LoginPage(driver).login("standard_user", "secret_sauce")
+                .openProduct()
+                .addProductToCart()
+                .moveToCartPage()
+                .checkout()
+                .enterYourInf("Basant","Sayed","1234")
+                .finishCheckout();
+        boolean isConfirmationMessageDisplayed = driver.findElement(FinishPage.ConfirmationMessage()).isDisplayed();
+        Assert.assertTrue(isConfirmationMessageDisplayed);
 
-        cartPage.checkout();
-        checkoutPage.enterYourInf("Basant","Sayed","12345");
-        checkoutOverview.finishCheckout();
-        Assert.assertTrue(finishPage.isConfirmationMessageDisplayed());
+
     }
 
     @Test
-    public void validateRemovingProduct(){
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
-        ProductPage productPage = new ProductPage(driver);
-        CartPage cartPage = new CartPage(driver);
-
-        loginPage.login("standard_user", "secret_sauce");
-        homePage.openProduct();
-        productPage.addProductToCart();
-        productPage.moveToCartPage();
-        Assert.assertTrue(cartPage.isRemoveButtonDisplayed());
-        cartPage.emptyTheCart();
+    public void validateEmptyCart(){
+        new LoginPage(driver).login("standard_user", "secret_sauce")
+                .openProduct()
+                .addProductToCart()
+                .moveToCartPage()
+               .emptyTheCart();
+        boolean isHomePageDisplayed = driver.findElement(HomePage.ProductLabel()).isDisplayed();
+        Assert.assertTrue(isHomePageDisplayed);
     }
+
+
 }

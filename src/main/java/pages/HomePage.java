@@ -7,7 +7,7 @@ public class HomePage {
         this.driver = driver;
     }
 
-    String productName = "Sauce Labs Bolt T-Shirt";
+    String productName = "Sauce Labs Backpack";
 
     //Elements
     private final By headerArea = By.className("app_logo");
@@ -16,18 +16,20 @@ public class HomePage {
 
 
     //getter
-    public By getHeaderArea(){
-        return headerArea;
+    public static By HeaderArea(){
+        return By.className("app_logo");
     }
+
+    public static By ProductLabel(){
+        return By.xpath("//div[@class=\"product_label\"]");
+    }
+
 
     //Actions
-    public void openProduct (){
+    public ProductPage openProduct (){
         driver.findElement(productLink).click();
-    }
 
-    //Assert
-    public boolean areProductsDisplayed(){
-        return driver.findElement(productLabel).isDisplayed();
+        return new ProductPage(driver);
     }
 
 }

@@ -12,8 +12,9 @@ public class FinishPage {
     private final By confirmationMessage = By.xpath("//h2[text()=\"THANK YOU FOR YOUR ORDER\"]");
 
 
-    //Assert
-    public boolean isConfirmationMessageDisplayed(){
-        return driver.findElement(confirmationMessage).isDisplayed();
+    //getter
+    public static By ConfirmationMessage(){
+        return By.xpath("//h2[text()=\"THANK YOU FOR YOUR ORDER\"]");
     }
+
 }
